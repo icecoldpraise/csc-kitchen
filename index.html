@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>CSC Kitchen</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,800;1,600&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+:root{--pri:#B3121F;--acc:#F2A03D;--sl:#8F101B;--bg:#FAF6EC;--ink:#1E2A24;--card:#fff;--mute:#5f6b64;--line:#e4dcc6;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--pri:#A3141F;--sl:#7A0F18;--bg:#12171400;--bg:#121714;--ink:#f1ecdc;--card:#1b231e;--mute:#a9b4ad;--line:#2d3a33}}
+:root[data-theme="dark"]{--pri:#A3141F;--sl:#7A0F18;--bg:#121714;--ink:#f1ecdc;--card:#1b231e;--mute:#a9b4ad;--line:#2d3a33}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 "DM Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;margin:0 0 .4rem;line-height:1.1}h1{font-size:clamp(2.6rem,9vw,5rem);font-weight:800}h2{font-size:2rem}h3{font-size:1.2rem}
+button,input,select,textarea{font:inherit;color:inherit}a{color:inherit}.w{max-width:1040px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--pri);color:#fff}header .w{display:flex;align-items:center;gap:16px;height:58px}
+.logo{font:800 1.4rem Fraunces,serif;text-decoration:none;margin-right:auto}header a{text-decoration:none;font-weight:500}
+.btn{background:var(--acc);color:#1E2A24;border:0;padding:11px 22px;border-radius:10px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block}.btn:hover{filter:brightness(.92)}
+.btn.o{background:none;border:1.5px solid var(--line);color:var(--ink)}.btn.s{padding:6px 14px;font-size:.9rem}.btn:disabled{opacity:.45;cursor:not-allowed}:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.hero{background:var(--pri);color:#fff;padding:64px 0 56px}.hero p{max-width:32rem;font-size:1.15rem;opacity:.92}.hero h1 em{color:var(--acc)}
+section{padding:40px 0}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;position:relative}
+.tile{height:180px;display:grid;place-items:center;background:var(--pri);color:rgba(255,255,255,.85);font:800 3.2rem Fraunces,serif;overflow:hidden;position:relative}.tile img{width:100%;height:100%;object-fit:cover;cursor:zoom-in}
+.card .b{padding:14px}.price{font-weight:700;color:var(--pri)}.desc{color:var(--mute);font-size:.92rem;margin:.2rem 0 .6rem}
+.badge{position:absolute;top:10px;left:10px;background:var(--acc);color:#1E2A24;font-size:.75rem;font-weight:700;padding:2px 10px;border-radius:99px}.sold{position:absolute;inset:0;background:rgba(0,0,0,.55);color:#fff;display:grid;place-items:center;font-weight:700}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.chip{border:1.5px solid var(--line);background:none;padding:6px 16px;border-radius:99px;cursor:pointer}.chip.on{background:var(--pri);border-color:var(--pri);color:#fff}
+input,select,textarea{width:100%;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg)}label{display:block;font-weight:500;margin:12px 0 4px}
+#drawer{position:fixed;right:0;top:0;bottom:0;width:min(390px,100%);background:var(--card);border-left:1px solid var(--line);z-index:9;padding:20px;transform:translateX(105%);transition:transform .25s;overflow:auto}#drawer.open{transform:none}
+.row{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);align-items:center}.qty button{width:28px;height:28px;border-radius:8px;border:1px solid var(--line);background:none;cursor:pointer}
+#toast{position:fixed;left:50%;bottom:30px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 20px;border-radius:99px;opacity:0;transition:opacity .3s;z-index:12;pointer-events:none}
+#lb{position:fixed;inset:0;z-index:20;background:rgba(10,15,12,.93);display:none;place-items:center;padding:16px;cursor:zoom-out}#lb.on{display:grid}#lb img{max-width:100%;max-height:92vh;border-radius:10px}#lb span{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:18px;color:#fff;font-size:2rem;line-height:1}
+footer{background:var(--sl);color:#fff;padding:32px 0}footer .w{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}footer p{margin:.2rem 0;white-space:pre-line}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}.tbl{width:100%;border-collapse:collapse;font-size:.92rem}.tbl th,.tbl td{text-align:left;padding:8px;border-bottom:1px solid var(--line)}.scroll{overflow-x:auto}
+body.adm{--bg:#EEF0F2;--card:#fff;--ink:#1c2128;--mute:#5b6370;--line:#d6dae0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) body.adm{--bg:#14161a;--card:#1d2026;--ink:#e8e8e6;--mute:#9aa0a6;--line:#2c3036}}
+body.adm header,body.adm footer{display:none}body.adm h2,body.adm h3{font-family:inherit}body.adm .btn{background:#1c2128;color:#fff;border-radius:6px}body.adm .btn.o{background:none;color:var(--ink);border:1px solid var(--line)}
+.ad{display:flex;min-height:100vh}.side{width:210px;flex:none;background:#1c2128;color:#e8e8e6;padding:22px 14px;display:flex;flex-direction:column;gap:4px}.side .al{font-weight:700;color:#E0A526;margin-bottom:18px}
+.side .si,.side a{background:none;border:0;color:inherit;text-align:left;padding:10px 12px;border-radius:6px;cursor:pointer;text-decoration:none}.side .si.on{background:#E0A526;color:#1c2128;font-weight:600}.side .sp{flex:1}.amain{flex:1;padding:24px;min-width:0}.alogin{display:grid;place-items:center;min-height:100vh;padding:20px}
+@media(max-width:700px){.ad{flex-direction:column}.side{width:auto;flex-direction:row;flex-wrap:wrap;align-items:center}.side .al{width:100%;margin-bottom:6px}.side .sp{display:none}}
+</style></head><body>
+<header><div class="w"><a class="logo" href="#/">CSC Kitchen</a><a href="#menu" data-go="menu">Menu</a><a href="#contact" data-go="contact">Find us</a><a href="#" id="cartb">Order (<span id="cc">0</span>)</a></div></header>
+<main id="app"></main><aside id="drawer" aria-label="Your order"></aside><div id="toast"></div>
+<div id="lb" role="dialog" aria-label="Photo viewer"><span aria-hidden="true">×</span><img alt=""></div>
+<script>
+const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const ld=(k,d,st)=>{try{const v=(st||localStorage).getItem('csc_'+k);return v?JSON.parse(v):d}catch(e){return d}};
+const sv=(k,v,st)=>{try{(st||localStorage).setItem('csc_'+k,JSON.stringify(v))}catch(e){}};
+const N=n=>'₦'+Number(n).toLocaleString();
+let LOG=[];const ST={menu:[],set:{}};let cart=ld('cart',{}),admin=!!ld('cred',null,sessionStorage),cat='All',q='',tab=ld('tab','Menu',sessionStorage);
+const toast=m=>{const t=$('#toast');t.textContent=m;t.style.opacity=1;setTimeout(()=>t.style.opacity=0,3000)};
+const phone=()=>{let d=String(ST.set.phone||'').replace(/\D/g,'');if(d.startsWith('0'))d='234'+d.slice(1);return d};
+const api=async(p,b)=>{try{const r=await fetch(p,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(b)});const j=await r.json();return r.ok?j:{error:j.error||'Request failed'}}catch(e){return{error:'Network error'}}};
+const adm=(action,x)=>api('/api/admin',{...ld('cred',{},sessionStorage),action,...x});
+const saveM=async()=>{const r=await adm('save',{file:'menu',data:ST.menu});toast(r.error||'Saved. It goes live on the site in about a minute.')};
+async function loadAll(){try{const[m,s]=await Promise.all([fetch('data/menu.json',{cache:'no-store'}).then(x=>x.json()),fetch('data/settings.json',{cache:'no-store'}).then(x=>x.json())]);ST.menu=m;ST.set=s}catch(e){}}
+const toB64=b=>new Promise(ok=>{const r=new FileReader();r.onload=()=>ok(r.result.split(',')[1]);r.readAsDataURL(b)});
+const shrink=f=>new Promise((ok,no)=>{const i=new Image();i.onload=()=>{const s=Math.min(1,900/i.width),c=document.createElement('canvas');c.width=i.width*s;c.height=i.height*s;c.getContext('2d').drawImage(i,0,0,c.width,c.height);c.toBlob(b=>b?ok(b):no(),'image/jpeg',.85)};i.onerror=no;i.src=URL.createObjectURL(f)});
+const item=id=>ST.menu.find(x=>x.id==id);
+const card=i=>`<article class="card"><div class="tile">${i.img?`<img src="${esc(i.img)}" alt="${esc(i.n)}" data-z="${esc(i.img)}" tabindex="0">`:esc((i.n||'?')[0])}${i.tag?`<span class="badge">${esc(i.tag)}</span>`:''}${i.av?'':'<div class="sold">Sold out</div>'}</div><div class="b"><h3>${esc(i.n)}</h3>${i.d?`<p class="desc">${esc(i.d)}</p>`:''}<div class="row" style="border:0;padding:0">${i.p>0?`<span class="price">${N(i.p)}</span><button class="btn s" data-a="${i.id}" ${i.av?'':'disabled'}>Add</button>`:`<span class="price" style="font-size:.9rem">Ask for price</span>${phone()?`<a class="btn s" target="_blank" rel="noopener" href="https://wa.me/${phone()}?text=${encodeURIComponent('Hello CSC Kitchen, how much is the '+i.n+'?')}">Ask</a>`:''}`}</div></div></article>`;
+const list=()=>ST.menu.filter(i=>(cat=='All'||i.c==cat)&&(!q||(i.n+' '+(i.d||'')).toLowerCase().includes(q.toLowerCase())));
+const grid=()=>{const l=list();return l.length?l.map(card).join(''):'<p>No dishes found.</p>'};
+const count=()=>Object.values(cart).reduce((a,b)=>a+b,0);
+const upd=()=>{$('#cc').textContent=count();drawer()};
+const drawer=()=>{const ids=Object.keys(cart).filter(k=>item(k));const t=ids.reduce((s,k)=>s+item(k).p*cart[k],0);$('#drawer').innerHTML=`<div class="row"><h3>Your order</h3><button class="btn o s" id="x">Close</button></div>`+(ids.length?ids.map(k=>`<div class="row"><span>${esc(item(k).n)}<br><small>${N(item(k).p)}</small></span><span class="qty"><button data-m="${k}">−</button> ${cart[k]} <button data-p="${k}">+</button></span></div>`).join('')+`<div class="row"><b>Total</b><b>${N(t)}</b></div><label>Your name</label><input id="cn"><label>Table number or delivery address</label><input id="ca"><br><br><button class="btn" id="co">Send order on WhatsApp</button>`:'<p>Your order is empty. Tap Add on any dish.</p>')};
+const V={
+home(){const cats=['All',...new Set(ST.menu.map(i=>i.c))],sp=ST.menu.filter(i=>i.sp&&i.av),S=ST.set;
+return`<div class="hero"><div class="w"><h1>CSC <em>Kitchen</em></h1><p>${esc(S.tagline||'')}</p><p><a class="btn" href="#menu" data-go="menu">See the menu</a></p></div></div>
+${sp.length?`<section><div class="w"><h2>Today’s specials</h2><div class="grid">${sp.map(card).join('')}</div></div></section>`:''}
+<section id="menu"><div class="w"><h2>Menu</h2>${ST.menu.length?`<input id="sq" type="search" placeholder="Search the menu" value="${esc(q)}"><div class="chips">${cats.map(c=>`<button class="chip ${c==cat?'on':''}" data-f="${esc(c)}">${esc(c)}</button>`).join('')}</div><div class="grid" id="g">${grid()}</div>`:'<p>Our menu is being prepared. Please check back soon.</p>'}</div></section>
+<footer id="contact"><div class="w"><div><h3>CSC Kitchen</h3><p>${esc(S.tagline||'')}</p></div>${S.address?`<div><h3>Find us</h3><p>${esc(S.address)}</p></div>`:''}${S.hours?`<div><h3>Opening hours</h3><p>${esc(S.hours)}</p></div>`:''}${S.phone?`<div><h3>Call or WhatsApp</h3><p><a href="tel:${esc(S.phone)}">${esc(S.phone)}</a></p></div>`:''}</div></footer>`},
+admin(){if(!admin)return`<section class="alogin"><div class="panel" style="width:100%;max-width:420px"><h2>CSC Kitchen admin</h2><form id="af"><label>Username</label><input id="au" autocomplete="username" required><label>Password</label><input id="ap" type="password" autocomplete="current-password" required><br><br><button class="btn">Log in</button> <a href="#/">Back to site</a></form></div></section>`;
+const tb=['Menu','Settings','Activity'].map(t=>`<button class="si ${t==tab?'on':''}" data-t="${t}">${t}</button>`).join('');let b='';const S=ST.set;
+if(tab=='Menu')b=`<form id="pf" class="panel"><h3>Add a dish</h3><div class="grid"><div><label>Name</label><input id="pn" required></div><div><label>Category</label><input id="pc" list="cl" required placeholder="Rice, Drinks, Starters…"><datalist id="cl">${[...new Set(ST.menu.map(i=>i.c))].map(c=>`<option value="${esc(c)}">`).join('')}</datalist></div><div><label>Price (₦)</label><input id="pp" type="number" min="0" required></div><div><label>Label</label><select id="pt"><option value="">None</option><option>Spicy</option><option>Vegetarian</option><option>Chef’s choice</option><option>New</option></select></div><div><label>Photo</label><input id="pi" type="file" accept="image/*"></div></div><label>Description</label><input id="pd"><br><br><button class="btn">Upload dish</button></form><br>${ST.menu.length?`<p style="color:var(--mute)">Dishes with no price show “Ask for price” on the site until you set one. Use the file box in each row to add a photo.</p><div class="scroll"><table class="tbl"><tr><th>Photo</th><th>Dish</th><th>Category</th><th>Price</th><th>Available</th><th>Special</th><th></th></tr>${ST.menu.map(i=>`<tr><td>${i.img?`<img src="${esc(i.img)}" alt="" width="44" height="44" style="object-fit:cover;border-radius:6px">`:'–'}<br><input type="file" accept="image/*" data-ph="${i.id}" style="width:140px;font-size:.8rem"></td><td>${esc(i.n)}</td><td>${esc(i.c)}</td><td><input type="number" value="${i.p||''}" placeholder="Set price" data-pr="${i.id}" style="width:100px"></td><td><input type="checkbox" data-av="${i.id}" ${i.av?'checked':''} style="width:auto"></td><td><input type="checkbox" data-sp="${i.id}" ${i.sp?'checked':''} style="width:auto"></td><td><button class="btn o s" data-d="${i.id}">Delete</button></td></tr>`).join('')}</table></div>`:'<p>No dishes yet. Use the form above to upload your first one.</p>'}`;
+else if(tab=='Settings')b=`<form id="sf" class="panel"><label>Tagline</label><input id="st" value="${esc(S.tagline)}"><label>WhatsApp / phone number</label><input id="sp" value="${esc(S.phone)}" placeholder="+234…"><label>Address</label><input id="sa" value="${esc(S.address)}"><label>Opening hours</label><textarea id="sh" rows="3">${esc(S.hours)}</textarea><br><button class="btn">Save settings</button></form>`;
+else b=LOG.length?`<p style="color:var(--mute)">Every change to your menu and settings, newest first.</p><div class="scroll"><table class="tbl"><tr><th>When</th><th>What</th></tr>${LOG.map(l=>`<tr><td>${esc(new Date(l.date).toLocaleString())}</td><td>${esc(l.msg)}</td></tr>`).join('')}</table></div>`:'<p>No activity yet.</p>';
+return`<div class="ad"><aside class="side"><div class="al">CSC Kitchen admin</div>${tb}<div class="sp"></div><a href="#/">View site</a><button class="si" id="lo">Log out</button></aside><div class="amain"><h2>${tab}</h2>${b}</div></div>`}};
+function render(){const h=location.hash.replace('#/','').replace('#','');const isA=h=='admin';document.body.classList.toggle('adm',isA);$('#app').innerHTML=(isA?V.admin():V.home());if(isA)scrollTo(0,0)}
+document.addEventListener('click',async e=>{const z=e.target.closest('img[data-z]');if(z){$('#lb img').src=z.dataset.z;$('#lb').classList.add('on');return}if(e.target.closest('#lb')){$('#lb').classList.remove('on');return}
+const t=e.target.closest('button,a');if(!t)return;const d=t.dataset;
+if(d.go){e.preventDefault();if(location.hash.includes('admin'))location.hash='#/';setTimeout(()=>document.getElementById(d.go)?.scrollIntoView(),50)}
+if(t.id=='cartb'){e.preventDefault();$('#drawer').classList.add('open')}if(t.id=='x')$('#drawer').classList.remove('open');
+if(d.a){cart[d.a]=(cart[d.a]||0)+1;sv('cart',cart);upd();toast('Added to your order')}
+if(d.p){cart[d.p]++;sv('cart',cart);upd()}if(d.m){if(--cart[d.m]<=0)delete cart[d.m];sv('cart',cart);upd()}
+if(d.f){cat=d.f;render();document.getElementById('menu')?.scrollIntoView()}
+if(d.t){tab=d.t;sv('tab',tab,sessionStorage);if(tab=='Activity'){const r=await adm('activity',{});LOG=r.log||[];if(r.error)toast(r.error)}render()}
+if(d.d&&confirm('Delete this dish?')){ST.menu=ST.menu.filter(i=>i.id!=d.d);render();await saveM()}
+if(t.id=='lo'){admin=false;sv('cred',null,sessionStorage);render()}
+if(t.id=='co'){const n=$('#cn').value.trim(),a=$('#ca').value.trim();if(!n)return toast('Please enter your name');const p=phone();if(!p)return toast('Ordering is not open yet');const ids=Object.keys(cart).filter(k=>item(k));const tot=ids.reduce((s,k)=>s+item(k).p*cart[k],0);
+window.open('https://wa.me/'+p+'?text='+encodeURIComponent(`Hello CSC Kitchen, I’d like to order:\n${ids.map(k=>`${cart[k]} x ${item(k).n}`).join('\n')}\nTotal: ${N(tot)}\nName: ${n}\n${a?'Table / address: '+a:''}`),'_blank');cart={};sv('cart',cart);upd();$('#drawer').classList.remove('open')}});
+document.addEventListener('input',e=>{if(e.target.id=='sq'){q=e.target.value;$('#g').innerHTML=grid()}});
+document.addEventListener('change',async e=>{const d=e.target.dataset,x=e.target;
+const up=async(id,k,v)=>{const i=item(id);if(i){i[k]=v;await saveM()}};
+if(d.av)await up(d.av,'av',x.checked?1:0);if(d.sp)await up(d.sp,'sp',x.checked?1:0);if(d.pr)await up(d.pr,'p',+x.value||0);if(d.ph){const f=x.files[0];if(f){toast('Uploading photo…');const u=await adm('upload',{base64:await toB64(await shrink(f))});if(u.error)return toast(u.error);const i=item(d.ph);i.img=u.url;render();await saveM()}}});
+document.addEventListener('keydown',e=>{if(e.key=='Escape')$('#lb').classList.remove('on');if(e.key=='Enter'&&e.target.dataset?.z){$('#lb img').src=e.target.dataset.z;$('#lb').classList.add('on')}});
+document.addEventListener('submit',async e=>{e.preventDefault();const f=e.target.id,g=i=>$('#'+i).value.trim();
+if(f=='af'){const c={user:g('au'),pass:$('#ap').value};const r=await api('/api/admin',{...c,action:'login'});if(r.error)return toast(r.error);sv('cred',c,sessionStorage);admin=true;render()}
+if(f=='pf'){let img='';const fl=$('#pi').files[0];if(fl){toast('Uploading photo…');const u=await adm('upload',{base64:await toB64(await shrink(fl))});if(u.error)return toast(u.error);img=u.url}
+ST.menu.unshift({id:Date.now(),n:g('pn'),c:g('pc'),p:+g('pp'),d:g('pd'),tag:g('pt'),img,av:1,sp:0});render();await saveM()}
+if(f=='sf'){ST.set={tagline:g('st'),phone:g('sp'),address:g('sa'),hours:g('sh')};const r=await adm('save',{file:'settings',data:ST.set});toast(r.error||'Saved. Live on the site in about a minute.')}});
+addEventListener('hashchange',render);(async()=>{await loadAll();render();upd()})();
+</script></body></html>

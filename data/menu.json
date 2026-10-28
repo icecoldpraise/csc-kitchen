@@ -1,0 +1,134 @@
+[
+  {
+    "id": 1,
+    "n": "Jollof Rice",
+    "c": "Rice",
+    "p": 0,
+    "d": "Smoky party-style rice cooked in a rich tomato and pepper sauce.",
+    "tag": "",
+    "img": "/img/jollof-rice.jpg",
+    "av": 1,
+    "sp": 0
+  },
+  {
+    "id": 2,
+    "n": "Fried Rice",
+    "c": "Rice",
+    "p": 0,
+    "d": "Rice stir-fried with mixed vegetables and seasoning.",
+    "tag": "",
+    "img": "/img/fried-rice.jpg",
+    "av": 1,
+    "sp": 0
+  },
+  {
+    "id": 5,
+    "n": "White Rice & Stew",
+    "c": "Rice",
+    "p": 0,
+    "d": "Plain white rice with Nigerian tomato stew.",
+    "tag": "",
+    "img": "/img/white-rice-and-stew.jpg",
+    "av": 1,
+    "sp": 0
+  },
+  {
+    "id": 37,
+    "n": "Egusi Soup",
+    "c": "Soups",
+    "p": 0,
+    "d": "Ground melon seed soup cooked with leafy vegetables.",
+    "tag": "",
+    "img": "/img/egusi-soup.jpg",
+    "av": 1,
+    "sp": 0
+  },
+  {
+    "id": 38,
+    "n": "Afang Soup",
+    "c": "Soups",
+    "p": 0,
+    "d": "Rich soup made from shredded afang leaves and waterleaf.",
+    "tag": "",
+    "img": "/img/afang-soup.jpg",
+    "av": 1,
+    "sp": 0
+  },
+  {
+    "id": 41,
+    "n": "Okro Soup",
+    "c": "Soups",
+    "p": 0,
+    "d": "Okra soup with a smooth, slightly draw texture.",
+    "tag": "",
+    "img": "/img/okro-soup.jpg",
+    "av": 1,
+    "sp": 0
+  },
+  {
+    "id": 21,
+    "n": "Fried Fish",
+    "c": "Proteins",
+    "p": 0,
+    "d": "Seasoned fish fried until crisp.",
+    "tag": "",
+    "img": "/img/fried-fish.jpg",
+    "av": 1,
+    "sp": 0
+  },
+  {
+    "id": 24,
+    "n": "Plantain & Egg Sauce",
+    "c": "Sides & Snacks",
+    "p": 0,
+    "d": "Fried ripe plantain served with a tomato and egg sauce.",
+    "tag": "",
+    "img": "/img/plantain-and-egg-sauce.jpg",
+    "av": 1,
+    "sp": 0
+  },
+  {
+    "id": 29,
+    "n": "Meat Pie",
+    "c": "Sides & Snacks",
+    "p": 0,
+    "d": "Flaky pastry filled with minced meat and potatoes.",
+    "tag": "",
+    "img": "/img/meat-pie.jpg",
+    "av": 1,
+    "sp": 0
+  },
+  {
+    "id": 31,
+    "n": "Bole",
+    "c": "Sides & Snacks",
+    "p": 0,
+    "d": "Roasted plantain.",
+    "tag": "",
+    "img": "/img/bole.jpg",
+    "av": 1,
+    "sp": 0
+  },
+  {
+    "id": 40,
+    "n": "Small Chops",
+    "c": "Sides & Snacks",
+    "p": 0,
+    "d": "A mix of bite-sized party snacks.",
+    "tag": "",
+    "img": "/img/small-chops.jpg",
+    "av": 1,
+    "sp": 0
+  },
+  {
+    "id": 32,
+    "n": "Yam & Egg Sauce",
+    "c": "Breakfast",
+    "p": 0,
+    "d": "Boiled yam served with a tomato and egg sauce.",
+    "tag": "",
+    "img": "/img/yam-and-egg-sauce.jpg",
+    "av": 1,
+    "sp": 0
+  }
+]
